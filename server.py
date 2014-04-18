@@ -117,4 +117,4 @@ def detect_win(board):
 
 if __name__ == '__main__':
     DEBUG = 'HEROKU' in os.environ
-    app.run(debug=DEBUG)
+    app.run(debug=DEBUG, port=int(os.environ.get('PORT', 5000)))
