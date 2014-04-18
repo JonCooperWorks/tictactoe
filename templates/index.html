@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tic-Tac-Toe</title>
+	</head>
+	<body>
+		<div id="info">
+			<form action="/game" method="POST">
+				<label for="name">Name</label>
+				<input type="text" name="name">
+
+				<label for="game">Game Name</label>
+				<input type="text" name="game">
+
+				<button type="submit">Join</button>
+			</form>
+		</div>
+
+		{% if winner %}
+			Winner: {{ winner }}
+		{% endif %}
+		{% if board %}
+		<div id="game">
+			<table>
+			<form action="{{ url_for('get_game', game_name=game_name) }}", method="POST">
+			{% for row in board %}
+				{% set outer = loop.index %}
+				<tr>
+				{% for cell in row %}
+					<td>
+						{% if cell %}
+							{{ cell }}	
+						{% else %}
+						<button type="submit" value="{{outer-1}},{{loop.index-1}}" name="position"></button>
+						{% endif %}
+					</td>
+				{% endfor %}
+				</tr>
+			{% endfor %}	
+			</form>
+			</table>
+		</div>
+		{% endif %}
+	</body>
+</html>
