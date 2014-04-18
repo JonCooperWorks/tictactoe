@@ -76,6 +76,7 @@ def get_game(game_name):
 
                 if detect_win(current_game['board']):
                     current_game['winner'] = current_game['turn']
+                    return 'You won!'
 
                 if move == 'X':
                     current_game['turn'] = current_game['O']
