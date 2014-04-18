@@ -2,8 +2,32 @@
 <html>
 	<head>
 		<title>Tic-Tac-Toe</title>
+		<style>
+			#info {
+				float: left;
+				width: 50%;
+			}
+
+			#game {
+				float: right;
+				width: 50%;
+			}
+
+			#game button {
+				height: 100px;
+				width: 100px;
+			}
+
+			#game tr {
+				font-size: 50pt;
+				text-align: center;
+			}
+		</style>
 	</head>
 	<body>
+		{% if session.name %} 
+		<h1>Hello, {{ session.name }} </h1>
+		{% else %}
 		<div id="info">
 			<form action="/game" method="POST">
 				<label for="name">Name</label>
@@ -15,6 +39,7 @@
 				<button type="submit">Join</button>
 			</form>
 		</div>
+		{% endif %}
 
 		{% if winner %}
 			Winner: {{ winner }}
